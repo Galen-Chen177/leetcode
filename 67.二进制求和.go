@@ -47,7 +47,18 @@ import "math/big"
 
 // @lc code=start
 func addBinary(a string, b string) string {
-	new(big.Int).Set
+	ai, ok := new(big.Int).SetString(a, 2)
+	if !ok {
+		return ""
+	}
+	bi, ok := new(big.Int).SetString(b, 2)
+	if !ok {
+		return ""
+	}
+
+	ai.Add(ai, bi)
+
+	return ai.Text(2)
 }
 
 // @lc code=end
