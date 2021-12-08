@@ -50,7 +50,25 @@ package leetcode
 
 // @lc code=start
 func mySqrt(x int) int {
+	if x < 2 {
+		return x
+	}
+	res := 0
+	left := 0
+	right := x
+	for left < right {
+		if res*res <= x && (res+1)*(res+1) > x {
+			return res
+		}
+		res = (left + right) / 2
+		if (res * res) < x {
+			left = res
+		} else if (res * res) > x {
+			right = res
+		}
+	}
 
+	return res
 }
 
 // @lc code=end
